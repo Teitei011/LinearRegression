@@ -117,8 +117,8 @@ function main(){
 }
 
 function put_in_the_screen(){
-  output1 = "m = " + alpha + " +/- " + incerteza_alpha + "\n"
-  output2= "n = " + beta + " +/- " + incerteza_beta + "\n"
+  output1 = "m = " + alpha + " ± " + incerteza_alpha + "\n"
+  output2= "n = " + beta + " ± " + incerteza_beta + "\n"
   output3 = "R² = " + r + "\n"
 
   inicial1.html(output1)
