@@ -177,7 +177,6 @@ function rSquare(){
 
   for (i = 0; i < y.length; i++){
     rUp += (y[i] - y_mean)**2;
-    print(rUp)
     rDown += (y[i] - beta)**2;
   }
 
