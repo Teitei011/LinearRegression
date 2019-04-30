@@ -39,33 +39,31 @@ function setup() {
   createCanvas(800, 600)
   textSize(40);
   fill(0)
-  var titulo = text("Linear Regression" , width /2 , height / 10);
+  var titulo = text("Linear Regression" , width * 0.5, height / 10);
 
-  // data_input = createElement('textarea').size(500,400);
-  data_input = createInput("");
-  data_input.position(width / 2, height / 4)
-
+  data_input = createElement('textarea').size(500,400);
+  // data_input = createInput("");
+  data_input.position(width*0.05, height / 4)
+  // data_input.input();
+  textSize(20);
   button = createButton("Process");
-  button.position(width*0.69, height / 4);
+  button.position(width*0.05, height * 0.95).size(500,50);
   button.mousePressed(main);
 
   inicial1 = createElement("h1",output1)
-  inicial1.position(width/ 2,200)
+  inicial1.position(width * 0.70, 200)
 
   inicial2 = createElement("h1",output2)
-  inicial2.position(width/ 2,300)
+  inicial2.position(width * 0.70, 300)
 
   inicial3 = createElement("h1",output3)
-  inicial3.position(width/ 2,400)
+  inicial3.position(width* 0.70, 400)
 }
 
-function draw(){
-  // background(255,0,0)
-}
 
 function process(){
   data_pre_processed = data_input.value();
-
+  data_pre_processed = data_pre_processed.replace(/(\r\n|\n|\r)/gm," ");
   x_y = [];
   x = [];
   y = [];
@@ -73,15 +71,24 @@ function process(){
   x_y = float(data_pre_processed.split(" "));
 
   // Separando cada valor em seu vetor correto
-  x.push(x_y[0]);
-  y.push(x_y[1]);
-  for (i = 2; i < x_y.length; i++){
-    if (i % 2 == 0)
+  let contador = 0;
+
+  // for (i = 0; i < x_y.length; i++) console.log(x_y[i]);
+
+  for (i = 0; i < x_y.length; i++){
+    if (contador == 0){
       x.push(x_y[i]);
-    else
+      ++contador;
+      }
+    else{
       y.push(x_y[i]);
+      contador = 0;
+    }
   }
   data_input.value("");
+
+  // console.log(x)
+
 }
 
 function inicializar_com_zero(){
